@@ -13,6 +13,8 @@
 		710DE1E8240D75CE00420937 /* BoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DE1E7240D75CE00420937 /* BoardingViewController.swift */; };
 		710DE1EA240D83BD00420937 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DE1E9240D83BD00420937 /* Extentions.swift */; };
 		710DE1EC240D8A7A00420937 /* SinglePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DE1EB240D8A7A00420937 /* SinglePageViewController.swift */; };
+		710DE1EF240DA33600420937 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DE1EE240DA33600420937 /* BankViewController.swift */; };
+		710DE1F2240DB50900420937 /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710DE1F1240DB50900420937 /* BankCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		710DE1E7240D75CE00420937 /* BoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingViewController.swift; sourceTree = "<group>"; };
 		710DE1E9240D83BD00420937 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		710DE1EB240D8A7A00420937 /* SinglePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageViewController.swift; sourceTree = "<group>"; };
+		710DE1EE240DA33600420937 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
+		710DE1F1240DB50900420937 /* BankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				710DE1D5240D74AB00420937 /* AppDelegate.swift */,
+				710DE1F0240DB4F900420937 /* Views */,
 				710DE1ED240D8A8800420937 /* ViewControllers */,
 				710DE1E9240D83BD00420937 /* Extentions.swift */,
 				710DE1DC240D74AC00420937 /* Assets.xcassets */,
@@ -71,8 +76,17 @@
 			children = (
 				710DE1E7240D75CE00420937 /* BoardingViewController.swift */,
 				710DE1EB240D8A7A00420937 /* SinglePageViewController.swift */,
+				710DE1EE240DA33600420937 /* BankViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		710DE1F0240DB4F900420937 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				710DE1F1240DB50900420937 /* BankCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +160,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				710DE1E8240D75CE00420937 /* BoardingViewController.swift in Sources */,
+				710DE1F2240DB50900420937 /* BankCell.swift in Sources */,
 				710DE1D6240D74AB00420937 /* AppDelegate.swift in Sources */,
 				710DE1EA240D83BD00420937 /* Extentions.swift in Sources */,
+				710DE1EF240DA33600420937 /* BankViewController.swift in Sources */,
 				710DE1EC240D8A7A00420937 /* SinglePageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

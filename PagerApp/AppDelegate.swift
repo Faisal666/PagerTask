@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
 //        let initialViewController = BoardingViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         let initialViewController = BankViewController()
-        let navController = UINavigationController(rootViewController: initialViewController)
-        self.window?.rootViewController = navController
+//        let navController = UINavigationController(rootViewController: initialViewController)
+        self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()
         return true
     }

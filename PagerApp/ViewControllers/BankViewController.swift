@@ -14,12 +14,14 @@ class BankViewController: UIViewController {
     private var bottomBorderLeadingConstrains: NSLayoutConstraint!
     private var currView: ViewType = .control
     private var stackView: UIStackView!
+    private var stackViewBackgroundImageView: UIImageView!
     private var controlButton: UIButton!
     private var statementsButton: UIButton!
     private var chargeButton: UIButton!
+    private var iconImageView: UIImageView!
     private var bottomBorder: UIView = {
         let view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = .white
         return view
     }()
     
@@ -45,11 +47,18 @@ class BankViewController: UIViewController {
         initSubviews()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        stackViewBackgroundImageView?.roundCorners(corners: [.topRight, .topLeft], radius: 9)
+    }
+    
     private func initSubviews() {
         initStackButtons(&controlButton, type: .control)
         initStackButtons(&statementsButton, type: .statements)
         initStackButtons(&chargeButton, type: .charge)
+        initIconImage()
         initCollectionView()
+        initStackViewBackgroundImageView()
         initStackView()
         initBottomBorder()
         setButtons()
@@ -60,11 +69,17 @@ class BankViewController: UIViewController {
     private func initStackButtons(_ button: inout UIButton?, type: ViewType) {
         button = UIButton()
         button?.setTitle(type.description, for: .normal)
-        button?.setTitleColor(.black, for: .normal)
+        button?.setTitleColor(.white, for: .normal)
         button?.titleLabel?.font = UIFont.systemFont(ofSize: 10)
         button?.titleLabel?.numberOfLines = 2
         button?.titleLabel?.lineBreakMode = .byWordWrapping
         button?.titleLabel?.textAlignment = .center
+    }
+    
+    private func initIconImage(){
+        iconImageView = UIImageView()
+        iconImageView.image = UIImage(named: "add-story-icon")
+        iconImageView.contentMode = .scaleAspectFit
     }
     
     private func setButtons() {
@@ -81,7 +96,7 @@ class BankViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .gray
         collectionView.layer.cornerRadius = 9
         collectionView.clipsToBounds = true
         registerCells()
@@ -93,10 +108,31 @@ class BankViewController: UIViewController {
     }
     
     private func initStackView() {
-        stackView = UIStackView(arrangedSubviews: [controlButton, statementsButton, chargeButton])
+        stackView = UIStackView(arrangedSubviews: [createButtonIconView(button: controlButton, image: UIImage(named: "add-story-icon") ?? UIImage()),
+                                                   createButtonIconView(button: statementsButton, image: UIImage(named: "add-story-icon") ?? UIImage()),
+                                                   createButtonIconView(button: chargeButton, image: UIImage(named: "add-story-icon") ?? UIImage())])
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         view.addSubview(stackView)
+    }
+    
+    private func initStackViewBackgroundImageView() {
+        stackViewBackgroundImageView = UIImageView()
+        stackViewBackgroundImageView.image = UIImage(named: "Image1")
+        stackViewBackgroundImageView.contentMode = .scaleAspectFill
+        view.addSubview(stackViewBackgroundImageView)
+    }
+    
+    private func createButtonIconView(button: UIButton, image: UIImage) -> UIView {
+        let view = UIView()
+        view.addSubview(button)
+        let imageView = UIImageView()
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+        view.addSubview(imageView)
+        imageView.anchor(leading: view.leadingAnchor, centerY: view.centerYAnchor, padding: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0), size: CGSize(width: 16, height: 16))
+        button.anchor(top: view.topAnchor, leading: imageView.trailingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor)
+        return view
     }
     
     private func initBottomBorder() {
@@ -119,6 +155,10 @@ class BankViewController: UIViewController {
                               centerY: self.view.centerYAnchor,
                               size: CGSize(width: view.frame.width * 0.8,
                                            height: view.frame.height * 0.5))
+        stackViewBackgroundImageView.anchor(top: stackView.topAnchor,
+                                            leading: stackView.leadingAnchor,
+                                            bottom: bottomBorder.bottomAnchor,
+                                            trailing: stackView.trailingAnchor)
     }
     
     @objc func controlButtonClicked(sender: UIButton) {
